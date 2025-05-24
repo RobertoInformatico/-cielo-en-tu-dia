@@ -4,24 +4,84 @@ import os
 
 app = Flask(__name__)
 
-# Plantilla HTML básica con formulario
 HTML = """
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>Cielo de tu Cumpleaños</title>
+    <style>
+        body {
+            background-color: #0e1a2b;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #00c2ff;
+            font-size: 2.5em;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            width: 200px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1em;
+            background-color: #00c2ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0099cc;
+        }
+
+        img {
+            max-width: 90%;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        p {
+            font-size: 1.1em;
+            margin: 20px auto;
+            max-width: 800px;
+            color: #d3d3d3;
+        }
+    </style>
 </head>
-<body style="font-family: Arial; text-align: center;">
+<body>
     <h1>🔭 Ver el cielo en tu cumpleaños</h1>
     <form method="post">
-        <label for="fecha">Introduce una fecha (YYYY-MM-DD):</label><br><br>
+        <label for="fecha">Introduce una fecha (YYYY-MM-DD):</label>
         <input type="date" name="fecha" required>
+        <br>
         <button type="submit">Ver cielo</button>
     </form>
 
     {% if imagen %}
         <h2>{{ titulo }}</h2>
-        <img src="{{ imagen }}" width="500"><br><br>
+        <img src="{{ imagen }}" alt="Imagen del cielo en tu cumpleaños">
         <p>{{ descripcion }}</p>
     {% endif %}
 </body>
